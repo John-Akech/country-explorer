@@ -22,7 +22,7 @@ Installation
 Clone the repository:
 
 
-git clone https://github.com/yourusername/country-explorer-app.git
+git clone git@github.com:John-Akech/country-explorer.git
 Navigate to the project folder:
 
 

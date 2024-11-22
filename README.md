@@ -1,7 +1,7 @@
 Country Explorer App 🌍✈️
 
 Welcome to the Country Explorer App!  
-This app is your gateway to discovering fascinating information about countries worldwide. Whether you're planning a trip, conducting research, or simply exploring out of curiosity, the Country Explorer App puts essential details like geography, population, languages, and more at your fingertips.  
+This app is your gateway to discovering fascinating information about countries worldwide. Whether you are planning a trip, conducting research, or simply exploring out of curiosity, the Country Explorer App puts essential details like geography, population, languages, and more at your fingertips.  
 
 Features 
 
@@ -18,9 +18,6 @@ Features
   - Current temperature  
   - Weather conditions  
 
-📰 Latest News 
-- Stay informed with the latest news articles relevant to the country you're exploring, sourced from trusted news outlets.
-
 
 How It Works  
 
@@ -29,8 +26,6 @@ How It Works
    - Instantly access key information like capital, population, location, and languages.  
 3. Get Weather Updates:  
    - See current weather conditions for the country's capital city.  
-4. Read News Updates:  
-   - Stay up-to-date with the latest happenings in the selected country.  
 
 
 Technologies Used 
@@ -38,7 +33,6 @@ Technologies Used
 This app is built using Flutter, integrating powerful APIs to deliver real-time country information:  
 - Rest Countries API: For detailed country information.  
 - OpenWeather API: For weather updates.  
-- News API: For the latest news.  
 
 Installation 
 

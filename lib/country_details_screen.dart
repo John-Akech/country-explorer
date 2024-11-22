@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // For using NetworkImage for Flag
+import 'package:google_maps_flutter/google_maps_flutter.dart'; // Google Map plugin
 
 class CountryDetailsScreen extends StatefulWidget {
   final String countryName;
@@ -14,6 +16,7 @@ class CountryDetailsScreen extends StatefulWidget {
 class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
   late Future<Map<String, dynamic>> _countryDetails;
   late Future<Map<String, dynamic>> _weatherDetails;
+  late LatLng _countryLatLng;
 
   @override
   void initState() {
@@ -26,6 +29,10 @@ class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
     final response = await http.get(Uri.parse('https://restcountries.com/v3.1/name/$countryName'));
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
+      if (data.isNotEmpty) {
+        // Set coordinates for the map
+        _countryLatLng = LatLng(data[0]['latlng'][0], data[0]['latlng'][1]);
+      }
       return data.isNotEmpty ? data[0] : {};
     } else {
       throw Exception('Failed to load country details');
@@ -76,7 +83,7 @@ class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
     final languages = details['languages'] != null
         ? (details['languages'] as Map).values.join(', ')
         : 'N/A';
-    final statesOrDistricts = details['divisions']?.length ?? 'N/A';
+    final flagUrl = details['flags']?['png'] ?? '';
 
     return SingleChildScrollView(
       child: Padding(
@@ -88,6 +95,8 @@ class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
               'Country: ${widget.countryName}',
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 20),
+            _buildFlag(flagUrl),
             const SizedBox(height: 20),
             _detailRow('Capital:', capital),
             _detailRow('Population:', population.toString()),
@@ -110,6 +119,8 @@ class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
                 }
               },
             ),
+            const SizedBox(height: 20),
+            _buildMap(),
           ],
         ),
       ),
@@ -136,6 +147,30 @@ class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildFlag(String flagUrl) {
+    return flagUrl.isNotEmpty
+        ? Image.network(flagUrl, height: 100)
+        : const Icon(Icons.flag, size: 100);
+  }
+
+  Widget _buildMap() {
+    return SizedBox(
+      height: 300,
+      child: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: _countryLatLng,
+          zoom: 6,
+        ),
+        markers: {
+          Marker(
+            markerId: MarkerId(widget.countryName),
+            position: _countryLatLng,
+          ),
+        },
       ),
     );
   }

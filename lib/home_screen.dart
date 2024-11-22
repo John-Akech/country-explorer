@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('World Explorer'),
+        title: const Text('World Explorer'), foregroundColor: Colors.white,
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             const Text(
               'Search for Country Information:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blueAccent),
             ),
             const SizedBox(height: 10),
             TextField(
@@ -61,7 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: const Text('Explore'),
+              child: const Text(
+                  'Explore',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+              ),
             ),
           ],
         ),

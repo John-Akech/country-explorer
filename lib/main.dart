@@ -8,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
-        '/countryDetails': (context) => CountryDetailsScreen(countryName: 'Default Country'),
+        '/countryDetails': (context) => const CountryDetailsScreen(countryName: 'Default Country'),
       },
     );
   }

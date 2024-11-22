@@ -1,4 +1,4 @@
-# Country Explorer App 🌍✈️
+Country Explorer App 🌍✈️
 
 Welcome to the Country Explorer App!  
 This app is your gateway to discovering fascinating information about countries worldwide. Whether you're planning a trip, conducting research, or simply exploring out of curiosity, the Country Explorer App puts essential details like geography, population, languages, and more at your fingertips.  
@@ -46,7 +46,7 @@ Follow these steps to get started:
 
 1️⃣ Clone the repository:  
 
-git clone git@github.com:John-Akech/country-explorer.git
+git@github.com:John-Akech/country-explorer.git
 
 2️⃣ Navigate to the project folder:
 cd country-explorer-app
